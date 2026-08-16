@@ -1,4 +1,4 @@
-export const Env_VARIABLES = {
+export const ENV_VARIABLES = {
     DB_URL: process.env.DB_URL,
     PORT: process.env.PORT
 }
