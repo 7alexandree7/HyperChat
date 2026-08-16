@@ -6,3 +6,6 @@ const app = express();
 app.listen(ENV_VARIABLES.PORT, () => {
     console.log(`Server running on port ${ENV_VARIABLES.PORT}`);
 });
+
+
+export default app
