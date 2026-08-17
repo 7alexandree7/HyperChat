@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":  "rimraf dist && shx cp -R src dist",
+    "build": "rimraf dist && shx cp -R src dist",
     "dev": "nodemon src/server/startServer.js",
     "start": "node src/server/startServer.js"
   },
@@ -16,6 +16,7 @@
   "dependencies": {
     "@clerk/express": "^2.1.57",
     "cors": "^2.8.6",
+    "cron": "^4.4.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.9.2",
