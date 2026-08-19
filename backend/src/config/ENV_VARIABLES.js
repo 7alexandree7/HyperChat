@@ -5,7 +5,8 @@ export const ENV_VARIABLES = {
     PORT: process.env.PORT,
     CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
-    ORIGIN: process.env.ORIGIN
+    ORIGIN: process.env.ORIGIN,
+    NODE_ENV: process.env.NODE_ENV
 }
 
 const requiredEnvVariables = [
@@ -13,7 +14,8 @@ const requiredEnvVariables = [
     'PORT',
     'CLERK_PUBLISHABLE_KEY',
     'CLERK_SECRET_KEY',
-    'ORIGIN'
+    'ORIGIN',
+    'NODE_ENV'
 ];
 
 requiredEnvVariables.forEach((envVar) => {
