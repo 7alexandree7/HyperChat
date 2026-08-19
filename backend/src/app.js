@@ -21,4 +21,7 @@ if (fs.existsSync(publicDir)) {
     })
 }
 
+
+app.get("/health", (req, res) => res.send("I'm alive!"));
+
 export default app
