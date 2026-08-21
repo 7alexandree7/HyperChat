@@ -4,9 +4,11 @@ import fs from "fs";
 import path from "path";
 import { ENV_VARIABLES } from "./config/ENV_VARIABLES.js";
 import { clerkMiddleware } from '@clerk/express'
+import clerkWebhook from "./webhooks/clerk.webhook.js";
 
 const app = express();
 
+app.use("/api/webhooks/clerk", express.raw({ type: "application/json" }), clerkWebhook);
 app.use(express.json());
 app.use(cors({ origin: ENV_VARIABLES.ORIGIN, credentials: true }));
 app.use(clerkMiddleware())
