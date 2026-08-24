@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
 import { Message } from "../models/message.model.js";
+import { hasImageKitConfig, uploadChatMedia } from "../lib/imagekit.js";
 
 
 export const getUsersForSideBar = async (req, res) => {
@@ -56,6 +57,42 @@ export const getMessages = async (req, res) => {
         return res.status(200).json({ messages });
     } catch (error) {
         console.log("Error getting messages", error.message);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+
+export const sendMessage = async (req, res) => {
+    try {
+        const { text } = req.body;
+        const { id: receiverId } = req.params;
+        const senderId = req.user._id;
+
+        let imageUrl;
+        let videoUrl;
+
+        if (req.file) {
+            if (!hasImageKitConfig()) return res.status(500).json({ message: "ImageKit config is not provided" });
+                
+            const url = await uploadChatMedia(req.file);
+            if (req.file.mimetype.startsWith("video/")) videoUrl = url;
+            if (req.file.mimetype.startsWith("image/")) imageUrl = url;
+        }
+
+        const message = new Message({
+            senderId,
+            receiverId,
+            text,
+            image: imageUrl,
+            video: videoUrl
+        });
+
+        await message.save();
+        return res.status(201).json({ message });
+
+
+    } catch (error) {
+        console.log("Error sending message", error.message);
         return res.status(500).json({ message: "Internal server error" });
     }
 }
