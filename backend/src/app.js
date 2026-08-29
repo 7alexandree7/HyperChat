@@ -6,8 +6,9 @@ import { ENV_VARIABLES } from "./config/ENV_VARIABLES.js";
 import { clerkMiddleware } from '@clerk/express'
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import routes from "./routes/index.js";
+import { app } from "./lib/socket.js";
 
-const app = express();
+
 
 app.use("/api/webhooks/clerk", express.raw({ type: "application/json" }), clerkWebhook);
 app.use(express.json());
