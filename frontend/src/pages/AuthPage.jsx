@@ -1,6 +1,6 @@
-import AuthActionPanel from "../components/auth/AuthActionPanel.jsx"
+import { AuthActionPanel } from "../components/auth/AuthActionPanel.jsx"
 import AuthHeader from "../components/auth/AuthHeader.jsx"
-import AuthHeroPanel from "../components/auth/AuthHeroPanel .jsx"
+import { AuthHeroPanel } from "../components/auth/AuthHeroPanel .jsx"
 import { useWallpaper } from "../context/wallpaper.js";
 
 const AuthPage = () => {
