@@ -1,5 +1,5 @@
-import { ThemeProvider } from "./contex/ThemeContext.jsx"
-import { WallpaperProvider } from "./contex/WallpaperContext.jsx"
+import { ThemeProvider } from "./context/ThemeContext.jsx"
+import { WallpaperProvider } from "./context/WallpaperContext.jsx"
 import { Routes, Route, Navigate } from "react-router"
 import ChatPage from "./pages/ChatPage.jsx"
 import AuthPage from "./pages/AuthPage.jsx"
@@ -15,7 +15,7 @@ function App() {
       <WallpaperProvider>
         <Routes>
           <Route path="/" element={isSignedIn ? <ChatPage /> : <Navigate to={"/auth"} replace/>} />
-          <Route path="/auth" element={isSignedIn ? <Navigate to ={"/"} replace/> : <AuthPage />} />
+          <Route path="/auth" element={ <AuthPage />} />
         </Routes>
       </WallpaperProvider>
     </ThemeProvider>
