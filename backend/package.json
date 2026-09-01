@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && shx cp -R src dist",
     "dev": "nodemon src/server/startServer.js",
-    "start": "node src/server/startServer.js"
+    "start": "node src/server/startServer.js",
+    "db:seed": "node src/seeds/user.seed.js"
   },
   "keywords": [],
   "author": "",
